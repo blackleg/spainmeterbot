@@ -8,4 +8,4 @@ sleep 5
 echo "-- Add ssh key"
 chmod 600 deploy_rsa
 ssh-add deploy_rsa
-rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/ "$deployurl"
+rsync -r --delete-after --quiet --exclude '.env' --exclude 'spainmeter.log' $TRAVIS_BUILD_DIR/ "$deployurl"
