@@ -6,3 +6,12 @@ install:
   - "pip install pylint"
 script:
   - "pylint --errors-only demand.py"
+addons:
+  ssh_known_hosts: blackleg.es
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: ".travis/deploy.sh"
+  on:
+    repo: blackleg/web
+    branch: master
