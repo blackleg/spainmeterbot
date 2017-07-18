@@ -1,3 +1,4 @@
 python-dotenv
 arrow
 reescraper
+python-twitter
