@@ -13,5 +13,5 @@ deploy:
   provider: script
   script: ".travis/deploy.sh"
   on:
-    repo: blackleg/web
+    repo: blackleg/spainmeterbot
     branch: master
