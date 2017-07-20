@@ -41,9 +41,9 @@ renewable = round(((peninsula.wind + peninsula.hydraulic + peninsula.solar) /pen
 other = round((peninsula.other/peninsula.demand)*100, 2)
 
 
-tweet = "Generación electricidad España (Península), {0} {1}, Nuclear: {2}%, Fósil: {3}%, Renovables: {4}%, Otras: {5}%".format(date, time, nuclear, fosil, renewable, other)
+tweet = "Generación #electricidad #España (Península), {0} {1}, #Nuclear: {2}%, #Fósiles: {3}%, #Renovables: {4}%, Otras: {5}%".format(date, time, nuclear, fosil, renewable, other)
 
-logger.debug("- Generated Tweet: " + tweet)
+logger.debug("- Generated Tweet: " + tweet + " Size: " + str(len(tweet)))
 
 enabled = environ.get("ENABLED", 'False')
 if enabled != 'True':

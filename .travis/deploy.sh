@@ -9,7 +9,7 @@ echo "-- Add ssh key"
 chmod 600 deploy_rsa
 ssh-add deploy_rsa
 ## Deploy requirements
-rsync -r --delete-after --quiet --exclude "$TRAVIS_BUILD_DIR/requirements.txt" "$deployurl/requirements.txt"
+rsync -r  "$TRAVIS_BUILD_DIR/requirements.txt" "$deployurl/requirements.txt"
 ## Deploy scripts
-rsync -r --delete-after --quiet --exclude "$TRAVIS_BUILD_DIR/demand.py" "$deployurl/demand.py"
-rsync -r --delete-after --quiet --exclude "$TRAVIS_BUILD_DIR/production.py" "$deployurl/production.py"
+rsync -r   "$TRAVIS_BUILD_DIR/demand.py" "$deployurl/demand.py"
+rsync -r   "$TRAVIS_BUILD_DIR/production.py" "$deployurl/production.py"
