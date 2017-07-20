@@ -8,8 +8,11 @@ sleep 5
 echo "-- Add ssh key"
 chmod 600 deploy_rsa
 ssh-add deploy_rsa
+sleep 5
+echo "-- Deploy scripts"
 ## Deploy requirements
 rsync -r  "$TRAVIS_BUILD_DIR/requirements.txt" "$deployurl/requirements.txt"
 ## Deploy scripts
 rsync -r   "$TRAVIS_BUILD_DIR/demand.py" "$deployurl/demand.py"
 rsync -r   "$TRAVIS_BUILD_DIR/production.py" "$deployurl/production.py"
+echo "-- Scripts deployed"
