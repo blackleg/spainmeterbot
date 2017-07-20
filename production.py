@@ -35,10 +35,10 @@ datetime = get(peninsula.timestamp).to('Europe/Madrid')
 date = datetime.format('DD-MM-YY', 'es_ES')
 time = datetime.format('HH:mm', 'es_ES')
 
-nuclear = round((peninsula.nuclear/peninsula.demand)*100, 2)
-fosil = round(((peninsula.gas + peninsula.combined + peninsula.carbon) /peninsula.demand)*100, 2)
-renewable = round(((peninsula.wind + peninsula.hydraulic + peninsula.solar) /peninsula.demand)*100, 2)
-other = round((peninsula.other/peninsula.demand)*100, 2)
+nuclear = round((peninsula.nuclear/peninsula.production())*100, 2)
+fosil = round(((peninsula.gas + peninsula.combined + peninsula.carbon) /peninsula.production())*100, 2)
+renewable = round(((peninsula.wind + peninsula.hydraulic + peninsula.solar) /peninsula.production())*100, 2)
+other = round((peninsula.other/peninsula.production())*100, 2)
 
 
 tweet = "Generación #electricidad #España (Península), {0} {1}, #Nuclear: {2}%, #Fósiles: {3}%, #Renovables: {4}%, Otras: {5}%".format(date, time, nuclear, fosil, renewable, other)
