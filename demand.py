@@ -38,7 +38,7 @@ day = date.format('DD', 'es_ES')
 month = date.format('MMMM', 'es_ES')
 time = date.format('HH:mm', 'es_ES')
 
-peninsula_tweet = "Demanda electricidad España el {0} de {1} a las {2}, Península: {3} MW".format(day, month, time, peninsula.demand)
+peninsula_tweet = "Demanda #electricidad #España el {0} de {1} a las {2}, Península: {3} MW".format(day, month, time, peninsula.demand)
 
 logger.debug("- Getting Balearic Islands Data")
 balearic = BalearicIslands().get()
@@ -48,7 +48,7 @@ if not balearic:
 else:
     balearic_date = get(balearic.timestamp).to('Europe/Madrid')
     time = balearic_date.format('HH:mm', 'es_ES')
-    balearic_tweet = ', Baleares ({0}): {1} MW'.format(time, balearic.demand)
+    balearic_tweet = ', #Baleares ({0}): {1} MW'.format(time, balearic.demand)
 
 logger.debug("- Getting Canary Islands Data")
 canary = CanaryIslands().get()
@@ -58,10 +58,10 @@ if not canary:
 else:
     canary_date = get(canary.timestamp).to('Europe/Madrid')
     time = canary_date.format('HH:mm', 'es_ES')
-    canary_tweet = ', Canarias ({0}): {1} MW'.format(time, canary.demand)
+    canary_tweet = ', #Canarias ({0}): {1} MW'.format(time, canary.demand)
 
 tweet = peninsula_tweet + balearic_tweet + canary_tweet
-logger.debug("- Generated Tweet: " + tweet)
+logger.debug("- Generated Tweet: " + tweet + " Size: " + str(len(tweet)))
 
 enabled = environ.get("ENABLED", 'False')
 if enabled != 'True':
