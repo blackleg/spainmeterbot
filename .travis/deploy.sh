@@ -15,4 +15,5 @@ rsync -r  "$TRAVIS_BUILD_DIR/requirements.txt" "$deployurl/requirements.txt"
 ## Deploy scripts
 rsync -r   "$TRAVIS_BUILD_DIR/demand.py" "$deployurl/demand.py"
 rsync -r   "$TRAVIS_BUILD_DIR/production.py" "$deployurl/production.py"
+rsync -r   "$TRAVIS_BUILD_DIR/production_balearic_islands.py" "$deployurl/production_balearic_islands.py"
 echo "-- Scripts deployed"
