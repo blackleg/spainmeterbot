@@ -1,7 +1,7 @@
 import logging
 
 from twitter import Api
-from reescraper import BalearicIslands
+from reescraper import CanaryIslands
 from arrow import get
 from dotenv import load_dotenv, find_dotenv
 from os import environ
@@ -26,21 +26,23 @@ logger.addHandler(fh)
 logger.addHandler(ch)
 
 logger.debug("Production Tweet")
-balearicislands = BalearicIslands().get()
-if not balearicislands:
-    logger.error("!! No Balearic Islands response ¡¡")
+canaryislands = CanaryIslands().get()
+if not canaryislands:
+    logger.error("!! No Canary Islands response ¡¡")
     quit()
 
-datetime = get(balearicislands.timestamp).to('Europe/Madrid')
+datetime = get(canaryislands.timestamp).to('Europe/Madrid')
 date = datetime.format('DD-MM-YY', 'es_ES')
 time = datetime.format('HH:mm', 'es_ES')
 
-fosil = round(((balearicislands.gas + balearicislands.combined + balearicislands.carbon) / balearicislands.production()) * 100, 2)
-renewable = round(((balearicislands.wind + balearicislands.hydraulic + balearicislands.solar) / balearicislands.production()) * 100, 2)
-other = round((balearicislands.unknown() / balearicislands.production()) * 100, 2)
+print(canaryislands)
+
+fosil = round(((canaryislands.gas + canaryislands.combined + canaryislands.carbon + canaryislands.fuel) / canaryislands.production()) * 100, 2)
+renewable = round(((canaryislands.wind + canaryislands.hydraulic + canaryislands.solar) / canaryislands.production()) * 100, 2)
+other = round((canaryislands.unknown() / canaryislands.production()) * 100, 2)
 
 
-tweet = "Generación #electricidad #Baleares, {0} {1}, #Fósiles: {2}%, #Renovables: {3}%, Otras: {4}%".format(date, time, fosil, renewable, other)
+tweet = "Generación #electricidad #Canarias, {0} {1}, #Fósiles: {2}%, #Renovables: {3}%, Otras: {4}%".format(date, time, fosil, renewable, other)
 
 logger.debug("- Generated Tweet: " + tweet + " Size: " + str(len(tweet)))
 
